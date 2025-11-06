@@ -10,17 +10,22 @@
 </head>
 <body>
   <h1>Hello World from WOFF!</h1>
-  <p id="userInfo">載入使用者資訊中...</p>
+  <div id="assetList">載入中...</div>
 
   <script>
-    woff.getUserInfo()
-      .then(user => {
-        document.getElementById('userInfo').textContent = `您好，${user.displayName}！`;
-      })
-      .catch(err => {
-        document.getElementById('userInfo').textContent = '無法取得使用者資訊';
-        console.error(err);
-      });
-  </script>
+fetch('https://keeperlist-468585210906.asia-east1.run.app')
+  .then(response => response.json())
+  .then(data => {
+    const list = data.map(item => `<li>${item.name} - ${item.status}</li>`).join('');
+    document.getElementById('assetList').innerHTML = `<ul>${list}</ul>`;
+  })
+  .catch(err => {
+    document.getElementById('assetList').textContent = '載入失敗';
+    console.error(err);
+  });
+</script>
 </body>
+
+
+
 </html>
