@@ -28,9 +28,9 @@
   // 轉換成簡單陣列
   const assets = records.map(record => {
     return {
-      辦公室地區: record["辦公室地區"].value
-      // 存放地點: record["存放地點"].value,
-      // 狀態: record["狀態"].value
+      資產號碼組合: record["資產號碼組合"].value,
+      製品名: record["製品名"].value,
+      存放地點: record["存放地點"].value
     };
   });
 console.log(assets)
@@ -38,12 +38,12 @@ console.log(assets)
 // 顯示成表格
   const html = `
     <table border="1" style="width:100%; text-align:left;">
-      <tr><th>資產名稱</th><th>存放地點</th><th>狀態</th></tr>
+      <tr><th>資產號碼</th><th>製品名</th><th>存放地點</th></tr>
       ${assets.map(item => `
         <tr>
-          <td>${item.辦公室地區}</td>
-          <td>${item.辦公室地區}</td>
-          <td>${item.辦公室地區}</td>
+          <td>${item.資產號碼組合}</td>
+          <td>${item.製品名}</td>
+          <td>${item.存放地點}</td>
         </tr>
       `).join('')}
     </table>
@@ -59,6 +59,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
