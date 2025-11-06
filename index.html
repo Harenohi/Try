@@ -21,7 +21,7 @@ woff.getUserInfo().then(user => {
   fetch('https://keeperlist-468585210906.asia-east1.run.app', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: userName })
+    body: JSON.stringify({ user_name: userName })
   })
   .then(res => res.json())
   .then(data => {
@@ -39,5 +39,6 @@ woff.getUserInfo().then(user => {
 
 
 </html>
+
 
 
