@@ -21,16 +21,35 @@
   })
   .then(res => res.json())
   .then(data => {
-    const assets = data.records.map(record =>
-      Object.keys(record).map(key => ({
-        name: key,
-        value: record[key].value
-      }))
-    ).flat();
+    
+  // 取出 records
+  const records = data.records;
+  
+  // 轉換成簡單陣列
+  const assets = records.map(record => {
+    return {
+      資產名稱: record["資產名稱"].value,
+      存放地點: record["存放地點"].value,
+      狀態: record["狀態"].value
+    };
+  });
 
-    const html = assets.map(item => `<li>${item.name}: ${item.value}</li>`).join('');
-    document.getElementById('assetList').innerHTML = `<ul>${html}</ul>`;
-  })
+
+// 顯示成表格
+  const html = `
+    <table border="1" style="width:100%; text-align:left;">
+      <tr><th>資產名稱</th><th>存放地點</th><th>狀態</th></tr>
+      ${assets.map(item => `
+        <tr>
+          <td>${item.資產名稱}</td>
+          <td>${item.存放地點}</td>
+          <td>${item.狀態}</td>
+        </tr>
+      `).join('')}
+    </table>
+  `;
+  document.getElementById('assetList').innerHTML = html;
+})
   .catch(err => console.error(err));
 
 </script>
@@ -40,6 +59,7 @@
 
 
 </html>
+
 
 
 
