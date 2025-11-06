@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>WOFF Hello World</title>
+  https://static.worksmobile.net/static/woff/sdk/latest/woff-sdk.js
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+  <h1>Hello World from WOFF!</h1>
+  <p id="userInfo">載入使用者資訊中...</p>
+
+  <script>
+    woff.getUserInfo()
+      .then(user => {
+        document.getElementById('userInfo').textContent = `您好，${user.displayName}！`;
+      })
+      .catch(err => {
+        document.getElementById('userInfo').textContent = '無法取得使用者資訊';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
