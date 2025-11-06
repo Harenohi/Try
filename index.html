@@ -13,32 +13,38 @@
   <div id="assetList">載入中...</div>
 
   <script>
-    
+  
+<script src="https://static.worksmobile.net/static/woff/sdk/latest/woff-sdk<script>
 woff.getUserInfo().then(user => {
   const userName = "呂采彬";
 
-  // 呼叫 Cloud Function，傳送人名
   fetch('https://keeperlist-468585210906.asia-east1.run.app', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user_name:{value:userName}})
+    body: JSON.stringify({ user_name: { value: userName } })
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data);
-    // 顯示資產清單
-    const html = data.assets.map(item => `<li>${item.name}: ${item.value}</li>`).join('');
+    const assets = data.records.map(record =>
+      Object.keys(record).map(key => ({
+        name: key,
+        value: record[key].value
+      }))
+    ).flat();
+
+    const html = assets.map(item => `<li>${item.name}: ${item.value}</li>`).join('');
     document.getElementById('assetList').innerHTML = `<ul>${html}</ul>`;
   })
   .catch(err => console.error(err));
 });
-
 </script>
+
 </body>
 
 
 
 </html>
+
 
 
 
