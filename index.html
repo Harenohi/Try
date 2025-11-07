@@ -23,7 +23,7 @@ woff.getUserInfo()
   fetch('https://keeperlist-468585210906.asia-east1.run.app', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user_name: { value: "呂采彬" } })
+    body: JSON.stringify({ user_name: { value: userName } })
   })
   .then(res => res.json())
   .then(data => {
@@ -66,6 +66,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
