@@ -29,7 +29,6 @@ if (encodedState) {
   // 第二次解碼
   const decodedName = decodeURIComponent(encodedName);
 
-  console.log("最終解碼後的名字是：", decodedName);
   document.getElementById("user_id").innerText = decodedName;
 }
 
@@ -54,7 +53,7 @@ if (encodedState) {
       存放地點: record["存放地點"].value
     };
   });
-console.log(assets)
+console.log(assets.length)
 
 // 顯示成表格
   if(assets.lenght>0){
@@ -87,6 +86,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
