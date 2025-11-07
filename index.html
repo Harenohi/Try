@@ -22,7 +22,7 @@ window.onload = function () {
                     woffId: woffId
                 })
                 .then(() => {
-                    woff.getProfile().then(profile => {
+                    woff.getUserInfo().then(profile => {
                         const profileInfoElem = document.getElementById("assetList");
                         profileInfoElem.innerHTML = `
                     ドメイン ID: ${profile.domainId} <br>
@@ -98,6 +98,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
