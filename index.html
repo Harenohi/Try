@@ -12,37 +12,17 @@
   <h1>Hello World from WOFF!</h1>
   <div>登入人：<span id="user_id"></span></div>
   <div id="assetList">載入中...</div>
-
-<script>
-const woffId = "iJP5zTXXN57sPmTPzoI7mQ";
-window.onload = function () {
-  woff.login({ redirectUri: "" }).then(() =>{
-            woff
-                .init({
-                    woffId: woffId
-                })
-                .then(() => {
-                    woff.getProfile().then(profile => {
-                      alert(JSON.stringify(profile))
-                        const profileInfoElem = document.getElementById("user_id");
-                        profileInfoElem.innerHTML = `
-                    ${profile.displayName}
-                `;
-                    }).catch(error => {
-                        console.error('Profile error:', error);
-                    });
-                })
-                .catch((err) => {
-                    console.log(err.code, err.message);
-                });
-    })
-    .catch((err) => {
-                    console.log(err.code, err.message);
-    });
-        };
-</script>
-
+  
   <script>
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const nameParam = urlParams.get('name');
+
+  if (nameParam) {
+    const decodedName = decodeURIComponent(nameParam);
+    document.getElementById("user_id").innerText = decodedName;
+  }
+
   const userName=document.getElementById('user_id').innerHTML
   fetch('https://keeperlist-468585210906.asia-east1.run.app', {
     method: 'POST',
@@ -89,6 +69,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
