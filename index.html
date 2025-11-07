@@ -14,7 +14,10 @@
   <div id="assetList">載入中...</div>
   
   <script>
-  
+    const search_url = new URL('https://www.google.com/search?q=HelloWorld&t=20200811');
+    const url=search_url.href;
+    const encodedString=decodeURIComponent(url)
+    console.log(encodedString)
   const urlParams = new URLSearchParams(window.location.search);
     console.log(urlParams)
   const nameParam = urlParams.get('name');
@@ -71,6 +74,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
