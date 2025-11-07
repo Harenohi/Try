@@ -11,7 +11,7 @@
 <body>
   <h1>Hello World from WOFF!</h1>
   <div>登入人：<span id="user_id"></span></div>
-  <div id="assetList">載入中...</div>
+  <div id="assetList" align="center">載入中...</div>
   
   <script>
   
@@ -57,8 +57,9 @@ if (encodedState) {
 console.log(assets)
 
 // 顯示成表格
-  const html = `
-    <table border="1" style="width:90%; text-align:left;">
+  if(assets.lenght>0){
+    const html = `
+    <table border="1" style="width:100%; text-align:left;">
       <tr><th>資產號碼</th><th>製品名</th><th>存放地點</th></tr>
       ${assets.map(item => `
         <tr>
@@ -69,7 +70,13 @@ console.log(assets)
       `).join('')}
     </table>
   `;
-  document.getElementById('assetList').innerHTML = html;
+    document.getElementById('assetList').innerHTML = html;
+  }
+  else{
+    document.getElementById('assetList').innerHTML = "盤點完成！";
+  }
+  
+    
 })
   .catch(err => console.error(err));
 
@@ -80,6 +87,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
