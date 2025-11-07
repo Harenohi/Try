@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>WOFF Hello World</title>
-  https://static.worksmobile.net/static/woff/sdk/latest/woff-sdk.js
   <style>
     body { font-family: sans-serif; text-align: center; margin-top: 50px;font-size:1.2em; }
   </style>
@@ -13,7 +12,13 @@
   <div id="assetList">載入中...</div>
 
   <script>
-
+    
+woff.getUserInfo()
+    .then(user => {
+      console.log(user); // 檢查完整資訊
+      const userName = user.displayName; // 使用者顯示名稱
+      // document.getElementById('userName').textContent = `您好，${userName}`;
+    
   fetch('https://keeperlist-468585210906.asia-east1.run.app', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -50,6 +55,7 @@ console.log(assets)
   `;
   document.getElementById('assetList').innerHTML = html;
 })
+})
   .catch(err => console.error(err));
 
 </script>
@@ -59,6 +65,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
