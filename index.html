@@ -13,18 +13,16 @@
   <div id="assetList">載入中...</div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (typeof woff !== 'undefined') {
-    woff.getUserInfo()
-      .then(user => {
-        console.log(user);
-        document.getElementById('userName').textContent = `您好，${user.displayName}`;
-      })
-      .catch(err => console.error('取得使用者資訊失敗:', err));
-  } else {
-    console.error('WOFF SDK 未載入或不在 WOFF 環境');
-  }
-});
+woff.getProfile().then(profile => {
+                        const profileInfoElem = document.getElementById("userProfileInfo");
+                        profileInfoElem.innerHTML = `
+                    ドメイン ID: ${profile.domainId} <br>
+                    ユーザー ID: ${profile.userId} <br>
+                    ユーザー名: ${profile.displayName}
+                `;
+                    }).catch(error => {
+                        console.error('Profile error:', error);
+                    });
 </script>
 
   <script>
@@ -81,6 +79,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
