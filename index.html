@@ -16,6 +16,7 @@
 <script>
 const woffId = "iJP5zTXXN57sPmTPzoI7mQ";
 window.onload = function () {
+  woff.login().then(() =>{
             woff
                 .init({
                     woffId: woffId
@@ -34,6 +35,10 @@ window.onload = function () {
                 .catch((err) => {
                     console.log(err.code, err.message);
                 });
+    })
+    .catch((err) => {
+                    console.log(err.code, err.message);
+    });
         };
 </script>
 
@@ -84,6 +89,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
