@@ -22,9 +22,10 @@ window.onload = function () {
                 })
                 .then(() => {
                     woff.getProfile().then(profile => {
+                      alert(profile)
                         const profileInfoElem = document.getElementById("user_id");
                         profileInfoElem.innerHTML = `
-                    ${profile.nickName}
+                    ${profile.displayName}
                 `;
                     }).catch(error => {
                         console.error('Profile error:', error);
@@ -83,6 +84,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
