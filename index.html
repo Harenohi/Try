@@ -23,7 +23,7 @@ window.onload = function () {
                 })
                 .then(() => {
                     woff.getProfile().then(profile => {
-                      alert(profile)
+                      alert(JSON.stringify(profile))
                         const profileInfoElem = document.getElementById("user_id");
                         profileInfoElem.innerHTML = `
                     ${profile.displayName}
@@ -89,6 +89,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
