@@ -13,7 +13,13 @@
   <div id="assetList">載入中...</div>
 
 <script>
-woff.getProfile().then(profile => {
+window.onload = function () {
+            woff
+                .init({
+                    woffId: woffId
+                })
+                .then(() => {
+                    woff.getProfile().then(profile => {
                         const profileInfoElem = document.getElementById("assetList");
                         profileInfoElem.innerHTML = `
                     ドメイン ID: ${profile.domainId} <br>
@@ -23,6 +29,16 @@ woff.getProfile().then(profile => {
                     }).catch(error => {
                         console.error('Profile error:', error);
                     });
+                })
+                .catch((err) => {
+                    console.log(err.code, err.message);
+                });
+
+            // document.getElementById("getLocationBtn").addEventListener("click", getLocation);
+            // document.getElementById("sendLocationBtn").addEventListener("click", sendLocationToWOFF);
+            // document.getElementById("scanQRBtn").addEventListener("click", scanQRCode);
+            // document.getElementById("sendQRDataBtn").addEventListener("click", sendQRToWOFF);
+        };
 </script>
 
   <script>
@@ -79,6 +95,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
