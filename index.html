@@ -17,10 +17,11 @@
   
   const urlParams = new URLSearchParams(window.location.search);
   const nameParam = urlParams.get('name');
-
+console.log(nameParam)
   if (nameParam) {
     const decodedName = decodeURIComponent(nameParam);
-    document.getElementById("user_id").innerText = decodedName;
+    console.log(decodedName)
+    document.getElementById("user_id").innerHTML = decodedName;
   }
 
   const userName=document.getElementById('user_id').innerHTML
@@ -69,6 +70,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
