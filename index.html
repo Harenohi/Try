@@ -16,7 +16,7 @@
   <script>
     const search_url = window.location.search;
     console.log(search_url)
-    const url=decodeURIComponent(search_url)
+    const url=decodeURI(search_url)
     console.log(url)
     
   const urlParams = new URLSearchParams(window.location.search);
@@ -75,6 +75,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
