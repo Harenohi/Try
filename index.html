@@ -27,7 +27,7 @@ window.onload = function () {
                         profileInfoElem.innerHTML = `
                     ドメイン ID: ${profile.domainId} <br>
                     ユーザー ID: ${profile.userId} <br>
-                    ユーザー名: ${profile.displayName}
+                    ユーザー名: ${profile.nickName}
                 `;
                     }).catch(error => {
                         console.error('Profile error:', error);
@@ -98,6 +98,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
