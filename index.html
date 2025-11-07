@@ -15,8 +15,12 @@
   
   <script>
     const search_url = location.href;
-    const encodedString=decodeURIComponent(search_url)
-    console.log(encodedString)
+    // const encodedString=decodeURIComponent(search_url)
+    // console.log(encodedString)
+    const url=search_url.search
+    const url_name=decodeURIComponent(url);
+    console.log(url_name)
+    
   const urlParams = new URLSearchParams(window.location.search);
     console.log(urlParams)
   const nameParam = urlParams.get('name');
@@ -73,6 +77,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
