@@ -11,37 +11,39 @@
 <body>
   <h1>Hello World from WOFF!</h1>
   <div id="assetList">載入中...</div>
-<script>
-        // WOFF アプリ ID を設定する
-        const woffId = "iJP5zTXXN57sPmTPzoI7mQ";
-</script>
-<script>
-window.onload = function () {
-            woff
-                .init({
-                    woffId: woffId
-                })
-                .then(() => {
-                    woff.getUserInfo().then(profile => {
-                        const profileInfoElem = document.getElementById("assetList");
-                        profileInfoElem.innerHTML = `
-                    ドメイン ID: ${profile.domainId} <br>
-                    ユーザー ID: ${profile.userId} <br>
-                    ユーザー名: ${profile.nickName}
-                `;
-                    }).catch(error => {
-                        console.error('Profile error:', error);
-                    });
-                })
-                .catch((err) => {
-                    console.log(err.code, err.message);
-                });
 
-            // document.getElementById("getLocationBtn").addEventListener("click", getLocation);
-            // document.getElementById("sendLocationBtn").addEventListener("click", sendLocationToWOFF);
-            // document.getElementById("scanQRBtn").addEventListener("click", scanQRCode);
-            // document.getElementById("sendQRDataBtn").addEventListener("click", sendQRToWOFF);
-        };
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+      if (typeof woff === 'undefined') {
+        document.getElementById('assetList').textContent = '請在 LINE WORKS WOFF App 中開啟';
+        return;
+      }
+
+      // 取得 Access Token
+      woff.getAccessToken()
+        .then(token => {
+          console.log('Access Token:', token);
+
+          // 呼叫 LINE WORKS API 取得使用者資訊
+          return fetch('https://apis.worksmobile.com/r/iJP5zTXXN57sPmTPzoI7mQ/v1/user/get', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+        })
+        .then(res => res.json())
+        .then(user => {
+          console.log('User Info:', user);
+          document.getElementById('assetList').textContent = `您好，${user.name}`;
+        })
+        .catch(err => {
+          console.error('取得使用者資訊失敗:', err);
+          document.getElementById('assetList').textContent = '登入失敗，請檢查設定';
+        });
+    });
+
+
 </script>
 
   <!-- <script>
@@ -98,6 +100,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
