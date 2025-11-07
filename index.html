@@ -16,7 +16,7 @@
 <script>
 const woffId = "iJP5zTXXN57sPmTPzoI7mQ";
 window.onload = function () {
-  woff.login().then(() =>{
+  woff.login({ redirectUri: "" }).then(() =>{
             woff
                 .init({
                     woffId: woffId
@@ -89,6 +89,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
