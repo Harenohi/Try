@@ -14,20 +14,25 @@
   <div id="assetList">載入中...</div>
   
   <script>
-    const search_url = window.location.search;
-    console.log(search_url)
-    const url=decodeURI(search_url)
-    console.log(url)
-    
-  const urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams)
-  const nameParam = urlParams.get('name');
-console.log(nameParam)
-  if (nameParam) {
-    const decodedName = decodeURIComponent(nameParam);
-    console.log(decodedName)
-    document.getElementById("user_id").innerHTML = decodedName;
-  }
+  
+const urlParams = new URLSearchParams(window.location.search);
+const encodedState = urlParams.get('woff.state');
+
+if (encodedState) {
+  // 第一次解碼
+  const firstDecode = decodeURIComponent(encodedState);
+
+  // 取得 name 參數
+  const innerParams = new URLSearchParams(firstDecode);
+  const encodedName = innerParams.get('name');
+
+  // 第二次解碼
+  const decodedName = decodeURIComponent(encodedName);
+
+  console.log("最終解碼後的名字是：", decodedName);
+  document.getElementById("user_id").innerText = decodedName;
+}
+
 
   const userName=document.getElementById('user_id').innerHTML
   fetch('https://keeperlist-468585210906.asia-east1.run.app', {
@@ -75,6 +80,7 @@ console.log(assets)
 
 
 </html>
+
 
 
 
